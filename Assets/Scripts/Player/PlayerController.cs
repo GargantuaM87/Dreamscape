@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     #region Variables
     [SerializeField] private GameObject Irene;
     [SerializeField] float moveSpeed;
+    private SkinnedMeshRenderer[] smr;
 
     private float horizontalInput;
     private float verticalInput;
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
+        smr = Irene.GetComponentsInChildren<SkinnedMeshRenderer>();
     }
 
     // Update is called once per frame
@@ -40,11 +42,6 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Q))
             DashAbility();
-
-        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && animator.GetCurrentAnimatorStateInfo(0).IsName("hit1"))
-        {
-            animator.SetBool("hit1", false);
-        }
 
         Movement();
         Switch();
@@ -80,12 +77,15 @@ public class PlayerController : MonoBehaviour
         if (dashTime > 0)
         {
             dashBody.SetActive(true);
-            Irene.SetActive(false);
+
+            foreach (var sm in smr)
+                sm.enabled = false;
         }
         else
         {
             dashBody.SetActive(false);
-            Irene.SetActive(true);
+            foreach (var sm in smr)
+                sm.enabled = true;
         }
 
     }

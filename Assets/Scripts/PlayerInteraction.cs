@@ -14,7 +14,7 @@ public class PlayerInteraction : MonoBehaviour
             {
                 if (collider.TryGetComponent(out IInteractable interactable))
                 {
-                    interactable.Interact();
+                    interactable.Interact(this.gameObject);
                 }
             }
         }

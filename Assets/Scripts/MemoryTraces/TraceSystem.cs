@@ -6,11 +6,14 @@ public class TraceSystem : MonoBehaviour, IInteractable
 {
     [SerializeField] private List<Traces> traces;
     [SerializeField] private GameObject traceMenu;
+     [SerializeField] private GameObject confirmationMenu;
     [SerializeField] private TraceHolder[] traceCards;
     private List<Traces> availableTraces;
     private Dictionary<string, Traces> selectList;
     private Rarity rarityTest;
     private string firstTrace, secondTrace, thirdTrace;
+    private Bells bellComp;
+    private int bells;
 
     void Start()
     {
@@ -21,14 +24,27 @@ public class TraceSystem : MonoBehaviour, IInteractable
         }
     }
 
-    public void Interact()
+    public void Interact(GameObject sender)
     {
-        Construct();
+        bellComp = sender.GetComponent<Bells>();
+        bells = bellComp.BellNum;
+        if (bells >= 1)
+            confirmationMenu.SetActive(true);
     }
 
     public string GetDiscription()
     {
         return "Bell Tower";
+    }
+
+    public void Prepare(int num)
+    {
+        if (bells >= num)
+        {
+            confirmationMenu.SetActive(false);
+            bellComp.SetBells(bells - num);
+            Construct();
+        }
     }
 
     public void Construct()

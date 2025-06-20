@@ -7,8 +7,13 @@ public class Bells : MonoBehaviour
     [SerializeField] private int gainChance;
     [SerializeField] private int bellGainAmount = 1;
     [SerializeField] private int somniMergeAmount = 10;
-    private int bells = 0;
+    [SerializeField] private int bells = 0;
     private int somni;
+
+    void Update()
+    {
+        countText.text = " " + bells;
+    }
 
     public void CalculateChance()
     {
@@ -35,5 +40,12 @@ public class Bells : MonoBehaviour
             somni = 0;
         }
     }
+
+    public void SetBells(int num)
+    {
+        bells = num;
+    }
+
+    public int BellNum { get { return bells; } }
 
 }
