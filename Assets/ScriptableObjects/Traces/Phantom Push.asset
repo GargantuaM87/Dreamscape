@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f7734884e827648a783fb86972012926, type: 3}
-  m_Name: Tending
+  m_Name: Phantom Push
   m_EditorClassIdentifier: 
-  traceName: Tending
-  description: Tending to oneself's inner strength. Provides +5 Health.
-  rarity: 0
+  traceName: 
+  description: Increase knockback force by 30%.
+  rarity: 1
   hpMod: 0
   atkMod: 0
-  knockbackMod: 0
+  knockbackMod: 1.3

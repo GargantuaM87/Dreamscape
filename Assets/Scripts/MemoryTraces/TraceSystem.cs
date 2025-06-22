@@ -63,6 +63,7 @@ public class TraceSystem : MonoBehaviour, IInteractable
         if (randomNum >= 95 && randomNum <= 100)
             rarityTest = Rarity.LEGENDARY;
 
+
         foreach (var (key, value) in selectList)
         {
             if (selectList[key].tRarity == Rarity.COMMON)

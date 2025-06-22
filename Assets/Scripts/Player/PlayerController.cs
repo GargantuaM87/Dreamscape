@@ -61,6 +61,11 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 moveDirection = new Vector3(horizontalInput, 0, verticalInput).normalized;
 
+        if (moveDirection != Vector3.zero)
+            animator.SetFloat("Speed", 1);
+        else
+            animator.SetFloat("Speed", 0);
+
         if (dashTime > 0)
             transform.position += dashSpeed * Time.deltaTime * moveDirection;
         else

@@ -4,10 +4,12 @@ using UnityEngine;
 public class ExplicitTraces : Traces
 {
     //Get references to player for attack stat, health 
-    [SerializeField] private int healthModifier;
-    [SerializeField] private int attackModifier;
+    [SerializeField] private int hpMod;
+    [SerializeField] private int atkMod;
+    [SerializeField] private float knockbackMod;
     private Health playerHealth;
     private Weapons playerWeapon;
+    private PlayerController player;
 
 
     public override void Execute()
@@ -15,8 +17,10 @@ public class ExplicitTraces : Traces
         playerHealth = FindAnyObjectByType<PlayerController>().GetComponentInChildren<Health>();
         playerWeapon = FindAnyObjectByType<PlayerController>().GetComponentInChildren<Weapons>(true);
 
-        playerHealth.MaxHealth += healthModifier;
-        playerHealth.CurrentHealth += healthModifier;
-        playerWeapon.Damage += attackModifier;
+        playerHealth.MaxHealth += hpMod;
+        playerHealth.CurrentHealth += hpMod;
+
+        playerWeapon.Damage += atkMod;
+        playerWeapon.Knockback = (int)(playerWeapon.Knockback * knockbackMod);
     }
 }

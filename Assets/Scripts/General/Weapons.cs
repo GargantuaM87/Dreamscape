@@ -1,10 +1,11 @@
+using System.Drawing;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class Weapons : MonoBehaviour
 {
     [SerializeField] private int damage;
-    [SerializeField] private int criticalChance = 10;
+    [SerializeField] private int criticalChance = 50;
     [SerializeField] private int criticalFactor = 1;
     [SerializeField] private int knockbackForce = 5;
     [SerializeField] GameObject hitPrefab;
@@ -27,7 +28,7 @@ public class Weapons : MonoBehaviour
             if (health = collision.gameObject.GetComponent<Health>())
             {
                 int rand = UnityEngine.Random.Range(0, criticalChance);
-                if (rand >= 9)
+                if (rand == 1)
                     criticalFactor = 2;
 
                 /* if (criticalFactor >= 2)
@@ -45,4 +46,6 @@ public class Weapons : MonoBehaviour
     }
 
     public int Damage { get { return damage; } set { damage = value; } }
+    public int CriticalChance { get { return criticalChance; } set { criticalChance = value; } }
+      public int Knockback { get { return knockbackForce; } set { knockbackForce = value; } }
 }
