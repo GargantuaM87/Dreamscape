@@ -8,7 +8,7 @@ public class EnemyMovement : MonoBehaviour
     private Vector3 distance;
     private bool isAttacking = false;
 
-    void Update()
+    void LateUpdate()
     {
         distance = player.transform.position - transform.position;
 

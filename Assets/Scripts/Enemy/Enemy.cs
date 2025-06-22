@@ -19,8 +19,8 @@ public class Enemy : MonoBehaviour, IHitable
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("PDamage"))
-        { 
-              //Invoke...
+        {
+            //Invoke...
             HitSplash();
             //Enemy burst after dying with screen shake
         }
@@ -45,5 +45,10 @@ public class Enemy : MonoBehaviour, IHitable
         pos.z += dir.z * knockbackForce;
 
         transform.position = new Vector3(pos.x, transform.position.y, pos.z);
+    }
+
+    void OnDestroy()
+    {
+        audioManager.PlaySound("DestroyEffect");
     }
 }

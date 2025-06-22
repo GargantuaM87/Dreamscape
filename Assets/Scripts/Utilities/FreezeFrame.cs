@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class FreezeFrame : MonoBehaviour
@@ -7,6 +8,7 @@ public class FreezeFrame : MonoBehaviour
     private float timer;
     private float freezeCooldown = 10f;
     private float freezeTimer;
+    private Camera mainCamera;
 
     void Awake()
     {
@@ -17,6 +19,7 @@ public class FreezeFrame : MonoBehaviour
         }
         else
             Destroy(gameObject);
+        mainCamera = Camera.main;
     }
 
     void Update()
@@ -36,5 +39,10 @@ public class FreezeFrame : MonoBehaviour
             timer = unfreezeTimer;
             freezeTimer = freezeCooldown;
         }
+    }
+
+    public void ShakeCamera()
+    {
+        mainCamera.DOShakePosition(0.2f, 7f, 10, 90, true);
     }
 }

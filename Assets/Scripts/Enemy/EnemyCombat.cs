@@ -1,3 +1,4 @@
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -6,10 +7,12 @@ public class EnemyCombat : MonoBehaviour
     [SerializeField] protected float attackDist;
     [SerializeField] protected float attackDelay;
     [SerializeField] protected Transform player;
+    [SerializeField] protected GameObject attackATP;
     protected Animator animator;
     protected float timer;
     public UnityEvent OnTargetAttack;
     public UnityEvent OnLeaveAttackRange;
+    private Vector3 distance;
 
     void Start()
     {
@@ -18,12 +21,15 @@ public class EnemyCombat : MonoBehaviour
 
     public virtual void OnAttack()
     {
+        GameObject effect = Instantiate(attackATP, transform.position, quaternion.identity);
+        Destroy(effect, 1f);
         animator.SetTrigger("Attack");
     }
 
-    void Update()
+    void LateUpdate()
     {
         timer -= Time.deltaTime;
+        distance = player.transform.position - transform.position;
         PrepareAttack();
     }
 
@@ -31,7 +37,6 @@ public class EnemyCombat : MonoBehaviour
     {
         if (timer <= 0)
         {
-            Vector3 distance = player.transform.position - transform.position;
             if (distance.magnitude <= attackDist)
             {
                 OnTargetAttack?.Invoke();

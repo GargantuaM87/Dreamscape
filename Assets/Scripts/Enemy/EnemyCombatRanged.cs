@@ -28,7 +28,7 @@ public class EnemyCombatRanged : EnemyCombat
         GameObject obj = Instantiate(projectile, spawnPoint.transform.position, spawnPoint.transform.rotation, transform);
         obj.GetComponent<Rigidbody>().AddForce(projectileSpeed * transform.forward, ForceMode.Impulse);
         //obj.GetComponent<Rigidbody>().linearVelocity = transform.TransformDirection(obj.transform.forward * projectileSpeed);
-        Destroy(obj, 2f);
+        Destroy(obj, 0.5f);
     }
 
 }

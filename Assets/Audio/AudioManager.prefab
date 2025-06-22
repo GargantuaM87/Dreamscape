@@ -51,3 +51,9 @@ MonoBehaviour:
     volume: 0.5
     pitch: 2.3
     source: {fileID: 0}
+  - name: Sophistry
+    clip: {fileID: 8300000, guid: 98c05774916f140f29da60e6d36c60e3, type: 3}
+    loop: 1
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}

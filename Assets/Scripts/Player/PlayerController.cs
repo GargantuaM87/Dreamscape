@@ -18,15 +18,21 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject dashBody;
     [SerializeField] private float dashSpeed;
     [SerializeField] private float dashDuration;
-    [SerializeField] private float dashTime;
     [SerializeField] private float dashCoolDown;
+    [SerializeField] private int consecutiveDashes = 2;
+    private int dashes;
     private float dashCoolDownTimer;
+    private float dashTime;
+    private BoxCollider bc;
+    private bool iFrames = false;
     #endregion
     #region Monobehaviour
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
-        smr = Irene.GetComponentsInChildren<SkinnedMeshRenderer>();
+        smr = GetComponentsInChildren<SkinnedMeshRenderer>();
+        bc = GetComponent<BoxCollider>();
+        dashes = consecutiveDashes;
     }
 
     // Update is called once per frame
@@ -43,6 +49,11 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.Q))
             DashAbility();
 
+        if (iFrames == true)
+            bc.enabled = false;
+        else
+            bc.enabled = true;
+
         Movement();
         Switch();
     }
@@ -52,8 +63,13 @@ public class PlayerController : MonoBehaviour
     {
         if (dashCoolDownTimer < 0)
         {
-            dashCoolDownTimer = dashCoolDown;
             dashTime = dashDuration;
+            dashes -= 1;
+            if (dashes <= 0)
+            {
+                dashes = consecutiveDashes;
+                dashCoolDownTimer = dashCoolDown;
+            }
         }
     }
 
@@ -82,17 +98,17 @@ public class PlayerController : MonoBehaviour
         if (dashTime > 0)
         {
             dashBody.SetActive(true);
+            iFrames = true;
 
             foreach (var sm in smr)
                 sm.enabled = false;
         }
         else
         {
+            iFrames = false;
             dashBody.SetActive(false);
             foreach (var sm in smr)
                 sm.enabled = true;
         }
-
     }
-
 }
