@@ -80,8 +80,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.7710874, y: 1, z: 3.2385}
-  m_Center: {x: 0.09362233, y: 0, z: 1.11925}
+  m_Size: {x: 3.7710874, y: 1, z: 3.0603845}
+  m_Center: {x: 0.09362233, y: 0, z: 1.2083079}
 --- !u!114 &2887017715221568117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,15 +114,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c237f4a6babdb469fb4fd5f0face73e9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.44
+      value: -1.8846884
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c237f4a6babdb469fb4fd5f0face73e9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.16
+      value: -3.168941
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c237f4a6babdb469fb4fd5f0face73e9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.88
+      value: 0.15488815
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c237f4a6babdb469fb4fd5f0face73e9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -130,15 +130,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c237f4a6babdb469fb4fd5f0face73e9, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c237f4a6babdb469fb4fd5f0face73e9, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c237f4a6babdb469fb4fd5f0face73e9, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c237f4a6babdb469fb4fd5f0face73e9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -241,8 +241,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87621ede4422c4435a8f5bfcade93017, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 20
-  maxHealth: 20
+  currentHealth: 15
+  maxHealth: 15
   floatingText: {fileID: 9104037608538401070, guid: 207c72f8cc9e2404084b55b267611b89, type: 3}
   isDead: 0
   OnHitReference:
@@ -250,7 +250,19 @@ MonoBehaviour:
       m_Calls: []
   OnDeathReference:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: FreezeFrame, Assembly-CSharp
+        m_MethodName: ShakeCamera
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &4432266997140974874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,7 +290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06c6fa4bd3ad84cb5a6ae15f888987f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseDist: 120
+  chaseDist: 40
   moveSpeed: 8
   player: {fileID: 0}
 --- !u!114 &4851309189815131084
@@ -294,9 +306,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDist: 10
-  attackDelay: 2
+  attackDelay: 3
   player: {fileID: 0}
-  attackATP: {fileID: 0}
+  attackATP: {fileID: 3915225575081098994, guid: 8b771d75ee7e24110a818aab59647b7f, type: 3}
   OnTargetAttack:
     m_PersistentCalls:
       m_Calls:
@@ -395,8 +407,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.6861877, y: 1, z: 2.9312024}
-  m_Center: {x: -8.998592, y: 0, z: -0.20933843}
+  m_Size: {x: 3.4164963, y: 1, z: 2.5761585}
+  m_Center: {x: -8.988347, y: 0, z: -0.24410486}
 --- !u!1001 &7815549537583078956
 PrefabInstance:
   m_ObjectHideFlags: 0

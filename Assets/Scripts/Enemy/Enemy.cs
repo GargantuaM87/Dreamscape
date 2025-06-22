@@ -46,9 +46,4 @@ public class Enemy : MonoBehaviour, IHitable
 
         transform.position = new Vector3(pos.x, transform.position.y, pos.z);
     }
-
-    void OnDestroy()
-    {
-        audioManager.PlaySound("DestroyEffect");
-    }
 }

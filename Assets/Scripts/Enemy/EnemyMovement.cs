@@ -5,22 +5,26 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private float chaseDist;
     [SerializeField] private float moveSpeed;
     [SerializeField] private Transform player;
+    private Rigidbody rb;
     private Vector3 distance;
     private bool isAttacking = false;
 
-    void LateUpdate()
+    void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
+    void FixedUpdate()
     {
         distance = player.transform.position - transform.position;
 
         if (distance.magnitude <= chaseDist && isAttacking == false)
-            Chase();
+        {
+            Vector3 moveDirection = new Vector3(distance.x, 0, distance.z).normalized;
+            rb.MovePosition(rb.position + moveSpeed * Time.fixedDeltaTime * moveDirection);
+        }
+    }
 
-    }
-    public void Chase()
-    {
-        Vector3 moveDirection = new Vector3(distance.x, 0, distance.z).normalized;
-        transform.position += moveSpeed * Time.deltaTime * moveDirection;
-    }
 
     public void StopChase()
     {
@@ -30,5 +34,5 @@ public class EnemyMovement : MonoBehaviour
     public void ContinueChase()
     {
         isAttacking = false;
-     }
+    }
 }

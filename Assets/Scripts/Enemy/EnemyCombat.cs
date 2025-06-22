@@ -7,7 +7,6 @@ public class EnemyCombat : MonoBehaviour
     [SerializeField] protected float attackDist;
     [SerializeField] protected float attackDelay;
     [SerializeField] protected Transform player;
-    [SerializeField] protected GameObject attackATP;
     protected Animator animator;
     protected float timer;
     public UnityEvent OnTargetAttack;
@@ -21,12 +20,10 @@ public class EnemyCombat : MonoBehaviour
 
     public virtual void OnAttack()
     {
-        GameObject effect = Instantiate(attackATP, transform.position, quaternion.identity);
-        Destroy(effect, 1f);
         animator.SetTrigger("Attack");
     }
 
-    void LateUpdate()
+    void Update()
     {
         timer -= Time.deltaTime;
         distance = player.transform.position - transform.position;
@@ -44,15 +41,11 @@ public class EnemyCombat : MonoBehaviour
                 timer = attackDelay;
                 OnAttack();
             }
-            else
-                animator.SetTrigger("Rest"); 
 
             if (distance.magnitude >= attackDist)
             {
                 OnLeaveAttackRange?.Invoke();
-                animator.SetTrigger("Rest");
             }
-                
         }
     }
 }
