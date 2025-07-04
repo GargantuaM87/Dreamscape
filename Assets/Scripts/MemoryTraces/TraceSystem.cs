@@ -66,7 +66,7 @@ public class TraceSystem : MonoBehaviour, IInteractable
 
         foreach (var (key, value) in selectList)
         {
-            if (selectList[key].tRarity == rarityTest)
+            if (selectList[key].tRarity == Rarity.COMMON)
             {
                 availableTraces.Add(selectList[key]);
 
