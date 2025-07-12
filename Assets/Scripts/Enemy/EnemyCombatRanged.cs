@@ -20,6 +20,7 @@ public class EnemyCombatRanged : EnemyCombat
     {
         transform.LookAt(player);
         timer -= Time.deltaTime;
+        onAttackedTimer -= Time.deltaTime;
         PrepareAttack();
     }
     public override void OnAttack()

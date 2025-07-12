@@ -264,7 +264,19 @@ MonoBehaviour:
   isDead: 0
   OnHitReference:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3854168257898369225}
+        m_TargetAssemblyTypeName: EnemyCombat, Assembly-CSharp
+        m_MethodName: OnAttacked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnDeathReference:
     m_PersistentCalls:
       m_Calls:
@@ -307,7 +319,7 @@ MonoBehaviour:
   attackDist: 40
   attackDelay: 6
   player: {fileID: 0}
-  attackATP: {fileID: 3915225575081098994, guid: 8b771d75ee7e24110a818aab59647b7f, type: 3}
+  onAttackedCooldown: 2
   OnTargetAttack:
     m_PersistentCalls:
       m_Calls:

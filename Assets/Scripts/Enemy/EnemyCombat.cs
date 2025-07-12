@@ -7,8 +7,10 @@ public class EnemyCombat : MonoBehaviour
     [SerializeField] protected float attackDist;
     [SerializeField] protected float attackDelay;
     [SerializeField] protected Transform player;
+    [SerializeField] protected float onAttackedCooldown;
     protected Animator animator;
     protected float timer;
+    protected float onAttackedTimer;
     public UnityEvent OnTargetAttack;
     public UnityEvent OnLeaveAttackRange;
     private Vector3 distance;
@@ -26,13 +28,16 @@ public class EnemyCombat : MonoBehaviour
     void Update()
     {
         timer -= Time.deltaTime;
+        onAttackedTimer -= Time.deltaTime;
         distance = player.transform.position - transform.position;
         PrepareAttack();
     }
 
+    public void OnAttacked() => onAttackedTimer = onAttackedCooldown;
+
     public void PrepareAttack()
     {
-        if (timer <= 0)
+        if (timer <= 0 && onAttackedTimer <= 0)
         {
             if (distance.magnitude <= attackDist)
             {

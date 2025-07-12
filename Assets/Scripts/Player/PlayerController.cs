@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float dashDuration;
     [SerializeField] private float dashCoolDown;
     [SerializeField] private int consecutiveDashes = 2;
-    private int dashes;
+    public int dashes;
     private float dashCoolDownTimer;
     private float dashTime;
     private BoxCollider bc;
@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
         dashTime -= Time.deltaTime;
         dashCoolDownTimer -= Time.deltaTime;
 
-        if (Input.GetKey(KeyCode.Q))
+        if (Input.GetKey(KeyCode.Q) && dashCoolDownTimer < 0)
             DashAbility();
 
         if (iFrames == true)
@@ -61,15 +61,12 @@ public class PlayerController : MonoBehaviour
 
     public void DashAbility()
     {
-        if (dashCoolDownTimer < 0)
+        dashTime = dashDuration;
+        dashes -= 1;
+        if (dashes <= 0)
         {
-            dashTime = dashDuration;
-            dashes -= 1;
-            if (dashes <= 0)
-            {
-                dashes = consecutiveDashes;
-                dashCoolDownTimer = dashCoolDown;
-            }
+            dashes = consecutiveDashes;
+            dashCoolDownTimer = dashCoolDown;
         }
     }
 
@@ -83,7 +80,7 @@ public class PlayerController : MonoBehaviour
             animator.SetFloat("Speed", 0);
 
         if (dashTime > 0)
-            transform.position += dashSpeed * Time.deltaTime * moveDirection;
+            transform.position += dashSpeed * Time.deltaTime * transform.forward;
         else
             transform.position += moveSpeed * Time.deltaTime * moveDirection;
 
