@@ -4,6 +4,8 @@ using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour, IHitable
 {
+    [SerializeField] Material[] mats = new Material[3];
+    private MaterialController matController;
     private AudioManager audioManager;
     private Rigidbody rb;
 
@@ -14,6 +16,7 @@ public class Enemy : MonoBehaviour, IHitable
     {
         audioManager = FindAnyObjectByType<AudioManager>();
         rb = GetComponent<Rigidbody>();
+        matController = new MaterialController(mats[0], mats[1], mats[2]);
     }
 
     void OnCollisionEnter(Collision collision)
@@ -30,6 +33,7 @@ public class Enemy : MonoBehaviour, IHitable
         audioManager.PlaySound("HitEffect");
         DOTween.KillAll(true);
         transform.DOShakeScale(0.4f, 0.5f, 1, 2, true, ShakeRandomnessMode.Harmonic);
+        matController.DOColor(Color.white);
     }
 
     public void Execute(Transform executeSource, int knockbackForce)

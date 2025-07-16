@@ -1,13 +1,21 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using DG.Tweening;
+using System.Collections;
 
 public class TraceSystem : MonoBehaviour, IInteractable
 {
     [SerializeField] private List<Traces> traces;
     [SerializeField] private GameObject traceMenu;
-     [SerializeField] private GameObject confirmationMenu;
+    [SerializeField] private GameObject confirmationMenu;
     [SerializeField] private TraceHolder[] traceCards;
+    public GameObject bellTowerEffects;
+    private float constructDelay = 1.2f;
+    private float delayTimer;
+    private bool constructReady = false;
+    private Material mat;
     private List<Traces> availableTraces;
     private Dictionary<string, Traces> selectList;
     private Rarity rarityTest;
@@ -22,6 +30,15 @@ public class TraceSystem : MonoBehaviour, IInteractable
         {
             selectList.Add(trace.Name, trace);
         }
+
+        mat = GetComponent<MeshRenderer>().material;
+    }
+
+    void Update()
+    {
+        delayTimer -= Time.deltaTime;
+        if (delayTimer <= 0)
+            constructReady = true;
     }
 
     public void Interact(GameObject sender)
@@ -37,13 +54,24 @@ public class TraceSystem : MonoBehaviour, IInteractable
         return "Bell Tower";
     }
 
+    public IEnumerator DelayConstruct()
+    {
+        yield return new WaitForSeconds(1.5f);
+        Construct();
+        StopCoroutine(DelayConstruct());
+    }
+
     public void Prepare(int num)
     {
         if (bells >= num)
         {
+            constructReady = false;
+            delayTimer = constructDelay;
+
+            DramaEffects();
             confirmationMenu.SetActive(false);
             bellComp.SetBells(bells - num);
-            Construct();
+            StartCoroutine(DelayConstruct());
         }
     }
 
@@ -93,9 +121,23 @@ public class TraceSystem : MonoBehaviour, IInteractable
         }
     }
 
+    public void DramaEffects()
+    {
+        Color oColor = mat.color;
+        bellTowerEffects.SetActive(true);
+        FreezeFrame.instance.ShakeCamera(1.5f, 7f, 10, 90, true);
+        AudioManager.instance.PlaySound("BellTowerChime");
+        AudioManager.instance.PlaySound("BellTowerInit");
+
+        var sequence = DOTween.Sequence();
+        sequence.Append(mat.DOColor(Color.white, 0.2f));
+        sequence.Append(mat.DOColor(oColor, 0.2f));
+    }
+
     public void Deconstruct()
     {
         traceMenu.SetActive(false);
+        bellTowerEffects.SetActive(false);
 
         Traces[] tempList = availableTraces.ToArray();
         for (int i = 0; i < tempList.Length; i++)

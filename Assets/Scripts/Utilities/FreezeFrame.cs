@@ -41,8 +41,8 @@ public class FreezeFrame : MonoBehaviour
         }
     }
 
-    public void ShakeCamera()
+    public void ShakeCamera(float duration, float strength, int vibrato, float randomness, bool fadeOut)
     {
-        mainCamera.DOShakePosition(0.2f, 7f, 10, 90, true);
+        mainCamera.DOShakePosition(duration, strength, vibrato, randomness, fadeOut);
     }
 }

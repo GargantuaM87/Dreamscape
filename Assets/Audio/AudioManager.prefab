@@ -49,11 +49,41 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 56be7b57f54ad48d889ced3abc6f0960, type: 3}
     loop: 0
     volume: 0.5
-    pitch: 2.3
+    pitch: 1
     source: {fileID: 0}
   - name: Sophistry
     clip: {fileID: 8300000, guid: 98c05774916f140f29da60e6d36c60e3, type: 3}
     loop: 1
+    volume: 0.75
+    pitch: 1
+    source: {fileID: 0}
+  - name: DestroyEffect
+    clip: {fileID: 8300000, guid: c9d646883805746c0ae07fdb523c199a, type: 3}
+    loop: 0
     volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+  - name: BellTowerChime
+    clip: {fileID: 8300000, guid: ffe6e4d25382342418ffb7481bdf3d0b, type: 3}
+    loop: 0
+    volume: 0.8
+    pitch: 1.1
+    source: {fileID: 0}
+  - name: BellTowerInit
+    clip: {fileID: 8300000, guid: 9f3a65c02e3cf48a78b55bc2b37dba3d, type: 3}
+    loop: 0
+    volume: 0.35
+    pitch: 1
+    source: {fileID: 0}
+  - name: BT_ButtonClick
+    clip: {fileID: 8300000, guid: 6369ca71438a04152970aa044447bd5c, type: 3}
+    loop: 0
+    volume: 0.75
+    pitch: 1
+    source: {fileID: 0}
+  - name: BT_ButtonSelect
+    clip: {fileID: 8300000, guid: 8414ca5535668429f800df2299758362, type: 3}
+    loop: 0
+    volume: 0.75
     pitch: 1
     source: {fileID: 0}
