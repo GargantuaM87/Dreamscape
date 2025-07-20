@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour, IHitable
 {
-    [SerializeField] Material[] mats = new Material[3];
+    [SerializeField] Material[] mats;
     private MaterialController matController;
     private AudioManager audioManager;
     private Rigidbody rb;

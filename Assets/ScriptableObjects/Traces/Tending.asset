@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Tending
   m_EditorClassIdentifier: 
   traceName: Tending
-  description: Tending to oneself's inner strength. Provides +5 Health.
+  description: "You gain increased health.\nHealth Gain:\t+5"
   rarity: 0
-  hpMod: 0
+  hpMod: 5
   atkMod: 0
   knockbackMod: 0

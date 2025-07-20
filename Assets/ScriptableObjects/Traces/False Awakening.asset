@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: False Awakening
   m_EditorClassIdentifier: 
   traceName: 'False Awakening '
-  description: "\"You believe you have woken up, have you?\" \nPlayer recieves +10
-    Health and +5 Attack."
+  description: "A jolt of lucidity.\nAttack/Health:\t+10%/+15\n"
   rarity: 0
-  healthModifier: 10
-  attackModifier: 5
+  hpMod: 15
+  atkMod: 0.15
+  knockbackMod: 0

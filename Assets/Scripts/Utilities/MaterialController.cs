@@ -18,21 +18,23 @@ public class MaterialController : MonoBehaviour
     {
         Color originalColor = Color.black;
 
-        var sequence = DOTween.Sequence();
+        var sq1 = DOTween.Sequence();
+        var sq2 = DOTween.Sequence();
+        var sq3 = DOTween.Sequence();
         if (mat1 != null)
         {
-            sequence.Append(mat1.DOColor(color, 0.2f));
-            sequence.Append(mat1.DOColor(originalColor, 0.2f));
+            sq1.Append(mat1.DOColor(color, 0.2f));
+            sq1.Append(mat1.DOColor(originalColor, 0.2f));
         }
         if (mat2 != null)
         {
-            sequence.Append(mat2.DOColor(color, 0.2f));
-            sequence.Append(mat2.DOColor(originalColor, 0.2f));
+            sq2.Append(mat2.DOColor(color, 0.2f));
+            sq2.Append(mat2.DOColor(originalColor, 0.2f));
         }
         if (mat3 != null)
         {
-            sequence.Append(mat3.DOColor(color, 0.2f));
-            sequence.Append(mat3.DOColor(originalColor, 0.2f));
-        }   
+            sq3.Append(mat3.DOColor(color, 0.2f));
+            sq3.Append(mat3.DOColor(originalColor, 0.2f));
+        }
     }
 }

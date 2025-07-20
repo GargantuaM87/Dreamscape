@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Fever Rush
   m_EditorClassIdentifier: 
   traceName: Fever Rush
-  description: An unexpected rush of power that increases Attack by +2
+  description: "An unexpected rush of power that increases attack.\nAttack:\t+5%"
   rarity: 0
-  healthModifier: 0
-  attackModifier: 2
+  hpMod: 0
+  atkMod: 0.05
+  knockbackMod: 0

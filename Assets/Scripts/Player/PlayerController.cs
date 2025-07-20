@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     private float dashTime;
     private BoxCollider bc;
     private bool iFrames = false;
+    private Rigidbody rb;
     #endregion
     #region Monobehaviour
     void Start()
@@ -32,6 +33,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         smr = GetComponentsInChildren<SkinnedMeshRenderer>();
         bc = GetComponent<BoxCollider>();
+        rb = GetComponent<Rigidbody>();
         dashes = consecutiveDashes;
     }
 
@@ -54,8 +56,13 @@ public class PlayerController : MonoBehaviour
         else
             bc.enabled = true;
 
-        Movement();
+        HandleDirection();
         Switch();
+    }
+
+    private void FixedUpdate()
+    {
+        MovePlayer();
     }
     #endregion
 
@@ -70,7 +77,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void Movement()
+    public void HandleDirection()
     {
         Vector3 moveDirection = new Vector3(horizontalInput, 0, verticalInput).normalized;
 
@@ -79,14 +86,27 @@ public class PlayerController : MonoBehaviour
         else
             animator.SetFloat("Speed", 0);
 
-        if (dashTime > 0)
-            transform.position += dashSpeed * Time.deltaTime * transform.forward;
-        else
-            transform.position += moveSpeed * Time.deltaTime * moveDirection;
-
         if (moveDirection != Vector3.zero)
         {
             transform.rotation = Quaternion.LookRotation(moveDirection);
+        }
+    }
+
+    public void MovePlayer()
+    {
+        Vector3 moveDirection = new Vector3(horizontalInput, 0, verticalInput).normalized;
+        if (dashTime > 0)
+        {
+            /* Vector3 move = dashSpeed * Time.deltaTime * new Vector3(horizontalInput, 0, verticalInput);
+             rb.MovePosition(rb.position + move);*/
+            rb.linearVelocity = dashSpeed * Time.deltaTime * transform.forward;
+        }
+
+        else
+        {
+            /*Vector3 move = Time.deltaTime * new Vector3(horizontalInput, 0, verticalInput);
+            rb.MovePosition(rb.position + move);*/
+            rb.linearVelocity = moveSpeed * Time.deltaTime * moveDirection;
         }
     }
 

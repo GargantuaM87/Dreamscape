@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7734884e827648a783fb86972012926, type: 3}
   m_Name: Phantom Push
   m_EditorClassIdentifier: 
-  traceName: 
-  description: Increase knockback force by 30%.
+  traceName: Phantom Push
+  description: "Your knockback force is increased.\nKnockback Force:\t+10%"
   rarity: 1
   hpMod: 0
   atkMod: 0
-  knockbackMod: 1.3
+  knockbackMod: 0.1

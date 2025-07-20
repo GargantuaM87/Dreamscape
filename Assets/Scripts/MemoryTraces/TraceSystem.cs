@@ -80,37 +80,47 @@ public class TraceSystem : MonoBehaviour, IInteractable
         availableTraces = new List<Traces>();
 
         traceMenu.SetActive(true);
-
-        int randomNum = UnityEngine.Random.Range(0, 101);
-        if (randomNum >= 0 && randomNum <= 60)
-            rarityTest = Rarity.COMMON;
-        if (randomNum >= 60 && randomNum <= 80)
-            rarityTest = Rarity.RARE;
-        if (randomNum >= 80 && randomNum <= 95)
-            rarityTest = Rarity.EPIC;
-        if (randomNum >= 95 && randomNum <= 100)
-            rarityTest = Rarity.LEGENDARY;
-
-
-        foreach (var (key, value) in selectList)
+        for (int i = 0; i < 3; i++)
         {
-            if (selectList[key].tRarity == Rarity.COMMON)
-            {
-                availableTraces.Add(selectList[key]);
+            StructExtensions.Shuffle(selectList);
+            int randomNum = UnityEngine.Random.Range(0, 101);
 
-                if (availableTraces.Count == 1)
-                    firstTrace = selectList[key].Name;
-                else if (availableTraces.Count == 2)
-                    secondTrace = selectList[key].Name;
-                else if (availableTraces.Count == 3)
+            if (randomNum > 60 && randomNum <= 80)
+                rarityTest = Rarity.RARE;
+            else if (randomNum > 80 && randomNum <= 95)
+                rarityTest = Rarity.EPIC;
+            else if (randomNum > 95 && randomNum <= 100)
+                rarityTest = Rarity.LEGENDARY;
+            else
+                rarityTest = Rarity.COMMON;
+
+            foreach (var (key, _) in selectList)
+            {
+                if (selectList[key].tRarity == rarityTest)
                 {
-                    thirdTrace = selectList[key].Name;
+                    availableTraces.Add(selectList[key]);
+
+                    if (availableTraces.Count == 1)
+                    {
+                        firstTrace = selectList[key].Name;
+                        selectList.Remove(firstTrace);
+                        break;
+                    }
+                    else if (availableTraces.Count == 2)
+                    {
+                        secondTrace = selectList[key].Name;
+                        selectList.Remove(secondTrace);
+                        break;
+                    }
+                    else if (availableTraces.Count == 3)
+                    {
+                        thirdTrace = selectList[key].Name;
+                        selectList.Remove(thirdTrace);
+                        break;
+                    }
                 }
             }
         }
-        selectList.Remove(firstTrace);
-        selectList.Remove(secondTrace);
-        selectList.Remove(thirdTrace);
 
         Traces[] tempList = availableTraces.ToArray();
 
@@ -146,6 +156,5 @@ public class TraceSystem : MonoBehaviour, IInteractable
                 selectList.Add(tempList[i].Name, tempList[i]);
         }
         availableTraces.Clear();
-
     }
 }
