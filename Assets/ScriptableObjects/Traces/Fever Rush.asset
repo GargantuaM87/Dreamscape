@@ -16,5 +16,11 @@ MonoBehaviour:
   description: "An unexpected rush of power that increases attack.\nAttack:\t+5%"
   rarity: 0
   hpMod: 0
+  isHealthMod: 0
   atkMod: 0.05
   knockbackMod: 0
+  isWeaponMod: 1
+  bellChanceMod: 0
+  gainMod: 0
+  somniMergeMod: 0
+  isBellMod: 0

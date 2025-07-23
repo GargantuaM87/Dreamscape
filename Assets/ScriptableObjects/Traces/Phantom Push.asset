@@ -16,5 +16,11 @@ MonoBehaviour:
   description: "Your knockback force is increased.\nKnockback Force:\t+10%"
   rarity: 1
   hpMod: 0
+  isHealthMod: 0
   atkMod: 0
   knockbackMod: 0.1
+  isWeaponMod: 1
+  bellChanceMod: 0
+  gainMod: 0
+  somniMergeMod: 0
+  isBellMod: 0

@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     private float verticalInput;
     private Animator animator;
     private float timer;
-
+#region Movement Variables
     [Header("Dash Parameters")]
     [SerializeField] private GameObject dashBody;
     [SerializeField] private float dashSpeed;
@@ -26,7 +26,8 @@ public class PlayerController : MonoBehaviour
     private BoxCollider bc;
     private bool iFrames = false;
     private Rigidbody rb;
-    #endregion
+    #endregion Movement Variables
+    #endregion Variables
     #region Monobehaviour
     void Start()
     {
@@ -99,14 +100,14 @@ public class PlayerController : MonoBehaviour
         {
             /* Vector3 move = dashSpeed * Time.deltaTime * new Vector3(horizontalInput, 0, verticalInput);
              rb.MovePosition(rb.position + move);*/
-            rb.linearVelocity = dashSpeed * Time.deltaTime * transform.forward;
+            rb.linearVelocity = dashSpeed * Time.fixedDeltaTime * transform.forward;
         }
 
         else
         {
             /*Vector3 move = Time.deltaTime * new Vector3(horizontalInput, 0, verticalInput);
             rb.MovePosition(rb.position + move);*/
-            rb.linearVelocity = moveSpeed * Time.deltaTime * moveDirection;
+            rb.linearVelocity = moveSpeed * Time.fixedDeltaTime * moveDirection;
         }
     }
 

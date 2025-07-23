@@ -41,11 +41,25 @@ public class Bells : MonoBehaviour
         }
     }
 
+    public void ReduceSomniMerge(int reduction)
+    {
+        somniMergeAmount -= reduction;
+        if (somni >= somniMergeAmount)
+        {
+            int quotient = somni / somniMergeAmount;
+            if (quotient >= 1)
+                for (int i = 0; i < quotient; i++)
+                    CalculateChance();
+        
+            somni %= somniMergeAmount;
+        }
+    }
+
     public void SetBells(int num)
     {
         bells = num;
     }
 
     public int BellNum { get { return bells; } }
-
+    public int GainChance { get { return gainChance; } set { gainChance = value; } }
 }

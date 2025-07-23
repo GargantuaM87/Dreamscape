@@ -44,10 +44,11 @@ public class Enemy : MonoBehaviour, IHitable
     public void KnockbackEntity(Transform executionSource, int knockbackForce)
     {
         Vector3 dir = (transform.position - executionSource.transform.position).normalized;
-        Vector3 pos = transform.position;
-        pos.x += dir.x * knockbackForce;
-        pos.z += dir.z * knockbackForce;
-
-        transform.position = new Vector3(pos.x, transform.position.y, pos.z);
+        //Vector3 pos = transform.position;
+        Vector3 dirForce = new Vector3(dir.x, 0, dir.z);
+        rb.MovePosition(rb.position + dirForce * knockbackForce);
+       /* pos.x += dir.x * knockbackForce;
+          pos.z += dir.z * knockbackForce;
+        transform.position = new Vector3(pos.x, transform.position.y, pos.z);*/
     }
 }

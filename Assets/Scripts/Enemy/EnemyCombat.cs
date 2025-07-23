@@ -14,15 +14,10 @@ public class EnemyCombat : MonoBehaviour
     public UnityEvent OnTargetAttack;
     public UnityEvent OnLeaveAttackRange;
     private Vector3 distance;
-
+    #region monobehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-    }
-
-    public virtual void OnAttack()
-    {
-        animator.SetTrigger("Attack");
     }
 
     void Update()
@@ -30,16 +25,25 @@ public class EnemyCombat : MonoBehaviour
         timer -= Time.deltaTime;
         onAttackedTimer -= Time.deltaTime;
         distance = player.transform.position - transform.position;
-        PrepareAttack();
     }
 
+    void FixedUpdate()
+    {
+        PrepareAttack();
+    }
+    #endregion
     public void OnAttacked() => onAttackedTimer = onAttackedCooldown;
+
+    public virtual void OnAttack()
+    {
+        animator.SetTrigger("Attack");
+    }
 
     public void PrepareAttack()
     {
         if (timer <= 0 && onAttackedTimer <= 0)
         {
-            if (distance.magnitude <= attackDist)
+            if (distance.magnitude < attackDist)
             {
                 OnTargetAttack?.Invoke();
 
@@ -47,10 +51,15 @@ public class EnemyCombat : MonoBehaviour
                 OnAttack();
             }
 
-            if (distance.magnitude >= attackDist)
+            if (distance.magnitude > attackDist)
             {
                 OnLeaveAttackRange?.Invoke();
             }
         }
+    }
+    //Properties
+    public float AttackDist
+    {
+        get { return attackDist; }
     }
 }

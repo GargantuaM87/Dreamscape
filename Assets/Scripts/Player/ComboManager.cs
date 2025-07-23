@@ -23,7 +23,9 @@ public class ComboManager : MonoBehaviour
             numClicks++;
 
             if (numClicks == 1)
+            {
                 animator.SetTrigger("Attack1");
+            }
             numClicks = Mathf.Clamp(numClicks, 0, 3);
         }
     }

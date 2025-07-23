@@ -16,5 +16,11 @@ MonoBehaviour:
   description: "You gain increased health.\nHealth Gain:\t+5"
   rarity: 0
   hpMod: 5
+  isHealthMod: 1
   atkMod: 0
   knockbackMod: 0
+  isWeaponMod: 0
+  bellChanceMod: 0
+  gainMod: 0
+  somniMergeMod: 0
+  isBellMod: 0

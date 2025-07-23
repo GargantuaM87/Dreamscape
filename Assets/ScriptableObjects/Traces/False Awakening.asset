@@ -16,5 +16,11 @@ MonoBehaviour:
   description: "A jolt of lucidity.\nAttack/Health:\t+10%/+15\n"
   rarity: 0
   hpMod: 15
+  isHealthMod: 1
   atkMod: 0.15
   knockbackMod: 0
+  isWeaponMod: 1
+  bellChanceMod: 0
+  gainMod: 0
+  somniMergeMod: 0
+  isBellMod: 0

@@ -16,5 +16,11 @@ MonoBehaviour:
   description: "A single stroke devoid of insomnia.\nAttack:\t+15%"
   rarity: 1
   hpMod: 0
+  isHealthMod: 0
   atkMod: 0.15
   knockbackMod: 0
+  isWeaponMod: 1
+  bellChanceMod: 0
+  gainMod: 0
+  somniMergeMod: 0
+  isBellMod: 0
