@@ -10,11 +10,17 @@ public class ShieldSpecial : Special
     private bool executed = false;
     private Shield shieldComp;
     private Health health;
+    private Rigidbody rb;
+    private PlayerController playerController;
     void Start()
     {
         health = GetComponent<Health>();
         shieldComp = GetComponent<Shield>();
         animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody>();
+        playerController = GetComponent<PlayerController>();
+
+        shieldComp.CurrentShield = 0;
     }
     void Update()
     {
@@ -33,6 +39,8 @@ public class ShieldSpecial : Special
         executed = true;
 
         animator.SetTrigger("Block");
+
+        playerController.enabled = false;
     }
     public override void DeExecute()
     {
@@ -41,10 +49,12 @@ public class ShieldSpecial : Special
         cooldownTimer = cooldown;
         executed = false;
 
+        playerController.enabled = true;
+
         GameObject obj = Instantiate(projectile, spawn.transform.position, quaternion.identity, transform);
         obj.GetComponent<Rigidbody>().AddForce(projSpeed * transform.forward, ForceMode.Impulse);
-        Destroy(obj, 0.5f);
-        
+        rb.AddForce(projSpeed * 2f * -transform.forward, ForceMode.Impulse);
+
         animator.SetTrigger("Rest");
     }
 }

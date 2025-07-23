@@ -10,6 +10,7 @@ public class Weapons : MonoBehaviour
     [SerializeField] private int criticalFactor = 1;
     [SerializeField] private int knockbackForce = 5;
     [SerializeField] GameObject hitPrefab;
+    [SerializeField] private bool isRanged = false;
 
     //Work on this later to derive a better formula for critical hits
     void OnCollisionEnter(Collision collision)
@@ -33,6 +34,9 @@ public class Weapons : MonoBehaviour
             //Responsible for providing knockback to gameobjects
             IHitable hitable = collision.transform.GetComponent<IHitable>();
             hitable?.Execute(transform, knockbackForce);
+
+            if (isRanged == true)
+                Destroy(gameObject);
         }
     }
 

@@ -352,7 +352,7 @@ MonoBehaviour:
   attackDist: 3.5
   attackDelay: 3
   player: {fileID: 0}
-  onAttackedCooldown: 0
+  onAttackedCooldown: 1
   OnTargetAttack:
     m_PersistentCalls:
       m_Calls:
