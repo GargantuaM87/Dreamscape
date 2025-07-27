@@ -14,6 +14,8 @@ public class EnemyMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         enemyCombat = GetComponent<EnemyCombat>();
+         if (player == null)
+            player = FindAnyObjectByType<PlayerController>().transform;
     }
 
 

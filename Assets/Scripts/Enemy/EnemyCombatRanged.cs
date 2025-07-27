@@ -15,12 +15,15 @@ public class EnemyCombatRanged : EnemyCombat
     void Start()
     {
         animator = GetComponent<Animator>();
+        if (player == null)
+            player = FindAnyObjectByType<PlayerController>().transform;
     }
     void Update()
     {
         transform.LookAt(player);
         timer -= Time.deltaTime;
         onAttackedTimer -= Time.deltaTime;
+        distance = player.transform.position - transform.position;
         PrepareAttack();
     }
     public override void OnAttack()
@@ -29,7 +32,7 @@ public class EnemyCombatRanged : EnemyCombat
         GameObject obj = Instantiate(projectile, spawnPoint.transform.position, spawnPoint.transform.rotation, transform);
         obj.GetComponent<Rigidbody>().AddForce(projectileSpeed * transform.forward, ForceMode.Impulse);
         //obj.GetComponent<Rigidbody>().linearVelocity = transform.TransformDirection(obj.transform.forward * projectileSpeed);
-        Destroy(obj, 0.5f);
+        Destroy(obj, 1.5f);
     }
 
 }

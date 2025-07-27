@@ -5,6 +5,8 @@ using UnityEngine.Events;
 public class Enemy : MonoBehaviour, IHitable
 {
     [SerializeField] Material[] mats;
+    [SerializeField] private float priority;
+    private Waves parentWave;
     private MaterialController matController;
     private AudioManager audioManager;
     private Rigidbody rb;
@@ -41,14 +43,19 @@ public class Enemy : MonoBehaviour, IHitable
         KnockbackEntity(executeSource, knockbackForce);
     }
 
+    public void DecreaseWaveLength() => parentWave.EnemyLength -= 1;
+
     public void KnockbackEntity(Transform executionSource, int knockbackForce)
     {
         Vector3 dir = (transform.position - executionSource.transform.position).normalized;
         //Vector3 pos = transform.position;
         Vector3 dirForce = new Vector3(dir.x, 0, dir.z);
         rb.MovePosition(rb.position + dirForce * knockbackForce);
-       /* pos.x += dir.x * knockbackForce;
-          pos.z += dir.z * knockbackForce;
-        transform.position = new Vector3(pos.x, transform.position.y, pos.z);*/
+        /* pos.x += dir.x * knockbackForce;
+           pos.z += dir.z * knockbackForce;
+         transform.position = new Vector3(pos.x, transform.position.y, pos.z);*/
     }
+
+    public float Priority { get { return priority; } set { priority = value; } }
+    public Waves ParentWave { get { return parentWave; } set { parentWave = value; } }
 }

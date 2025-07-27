@@ -7,7 +7,8 @@ using UnityEngine.Events;
 
 public class DialogTrigger : MonoBehaviour, IInteractable
 {
-    [SerializeField] private List<dialogString> dialogStrings = new List<dialogString>();
+    [SerializeField] private List<DialogString> dialogStrings = new List<DialogString>();
+    [SerializeField] private SpeakerInfo speakerInfo;
     private bool hasSpoken = false;
 
     public string GetDiscription()
@@ -17,9 +18,7 @@ public class DialogTrigger : MonoBehaviour, IInteractable
 
     public void Interact(GameObject sender)
     {
-        DialogManager.instance.DialogStart(dialogStrings);
-        Debug.Log(sender.name);
-        Debug.Log("Works!");
+        DialogManager.instance.DialogStart(dialogStrings, speakerInfo);
         hasSpoken = true;
     }
 
@@ -27,8 +26,9 @@ public class DialogTrigger : MonoBehaviour, IInteractable
 
 [System.Serializable]
 
-public class dialogString
+public class DialogString
 {
+    [TextArea]
     public string text; //Represents NPC text
     public bool isEnd; //Represent if the line is the final line for the convo
 
@@ -43,3 +43,18 @@ public class dialogString
     public UnityEvent startDialogEvent;
     public UnityEvent endDialogEvent;
 }
+
+[System.Serializable]
+
+public class SpeakerInfo
+{
+    [SerializeField]
+    private Sprite avatar;
+    [SerializeField] private string speakerName;
+    [SerializeField] private string speakerTitle;
+
+    public Sprite Avatar { get { return avatar; } }
+    public string SpeakerName { get { return speakerName; } }
+    public string SpeakerTitle { get { return speakerTitle; } }
+}
+

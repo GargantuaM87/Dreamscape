@@ -7,18 +7,24 @@ using TMPro;
 using UnityEditor.Search;
 using UnityEngine.UI;
 using UnityEngine.Animations;
+using DG.Tweening;
 
 public class DialogManager : MonoBehaviour
 {
     public static DialogManager instance;
+    [Header("Dialogue Info")]
     [SerializeField] private GameObject dialogParent;
     [SerializeField] private TMP_Text dialogText;
     [SerializeField] private Button option1Button;
     [SerializeField] private Button option2Button;
     [SerializeField] private float typingSpeed = 0.05f;
-    private List<dialogString> dialogList;
-    dialogString line;
+    private List<DialogString> dialogList;
+    DialogString line;
     private RigidbodyConstraints originalConstraints;
+    [Header("Speaker Info")]
+    [SerializeField] private Image avatarDisplay;
+    [SerializeField] private TMP_Text sName;
+    [SerializeField] private TMP_Text sTitle;
 
     [Header("Player")]
     [SerializeField] private PlayerController playerController;
@@ -40,11 +46,13 @@ public class DialogManager : MonoBehaviour
         dialogParent.SetActive(false);
     }
 
-    public void DialogStart(List<dialogString> textToPrint)
+    public void DialogStart(List<DialogString> textToPrint, SpeakerInfo speakerInfo)
     {
         dialogParent.SetActive(true);
         playerController.enabled = false;
         playerController.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
+
+        SetSpeakerInfo(speakerInfo);
 
         dialogList = textToPrint;
         currentDialogIndex = 0;
@@ -53,10 +61,20 @@ public class DialogManager : MonoBehaviour
         StartCoroutine(PrintDialog());
     }
 
+    private void SetSpeakerInfo(SpeakerInfo speakerInfo)
+    {
+        avatarDisplay.sprite = speakerInfo.Avatar;
+        sName.text = speakerInfo.SpeakerName;
+        sTitle.text = speakerInfo.SpeakerTitle;
+    }
+
     private void DisableButtons()
     {
         option1Button.GetComponentInChildren<TMP_Text>().text = "";
         option2Button.GetComponentInChildren<TMP_Text>().text = "";
+
+        option1Button.transform.DOLocalMoveX(1400f, 1.2f);
+        option2Button.transform.DOLocalMoveX(1400f, 1.2f);
     }
 
     private bool optionSelected = false;
@@ -78,7 +96,6 @@ public class DialogManager : MonoBehaviour
                 option2Button.GetComponentInChildren<TMP_Text>().text = line.answerOption2;
 
                 yield return new WaitUntil(() => optionSelected);
-
             }
             else
             {

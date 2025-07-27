@@ -11,13 +11,16 @@ public class EnemyCombat : MonoBehaviour
     protected Animator animator;
     protected float timer;
     protected float onAttackedTimer;
+    protected private Vector3 distance;
     public UnityEvent OnTargetAttack;
     public UnityEvent OnLeaveAttackRange;
-    private Vector3 distance;
+
     #region monobehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        if (player == null)
+            player = FindAnyObjectByType<PlayerController>().transform;
     }
 
     void Update()
