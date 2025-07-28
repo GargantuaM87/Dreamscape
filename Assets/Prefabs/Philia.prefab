@@ -273,6 +273,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: a1a93b7a4b98540148e9426f901492e5, type: 2}
   - {fileID: 0}
   - {fileID: 0}
+  priority: 0
 --- !u!114 &2876310641371847731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,9 +296,9 @@ MonoBehaviour:
   OnDeathReference:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: FreezeFrame, Assembly-CSharp
-        m_MethodName: ShakeCamera
+      - m_Target: {fileID: 8315475385431495337}
+        m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
+        m_MethodName: DecreaseWaveLength
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

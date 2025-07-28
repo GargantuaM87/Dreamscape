@@ -12,14 +12,13 @@ public class Substate : MonoBehaviour
     private List<Waves> enemyWaves = new List<Waves>();
     private List<Enemy> enemies;
     private Substate nextState;
-    private Waves currentWave;
+    private Waves currentWave = new Waves();
     private bool waveDefeated = false;
 
 
-    void Start()
+    void Awake()
     {
         enemies = data;
-        GenerateEnemies();
     }
 
     void Update()
@@ -33,7 +32,7 @@ public class Substate : MonoBehaviour
         for (int i = 0; i < numOfWaves; i++)
         {
             Waves wave = new Waves();
-            int numOfEnemies = UnityEngine.Random.Range(0, 11);
+            int numOfEnemies = UnityEngine.Random.Range(1, 11);
             for (int j = 0; j < numOfEnemies; j++)
             {
                 int rNum1 = UnityEngine.Random.Range(0, enemies.Count);
@@ -77,5 +76,31 @@ public class Substate : MonoBehaviour
         Enemy e3 = e1.Priority > e2.Priority ? e1 : e2;
         return e3;
     }
+
+    public void GenerateNextState()
+    {
+        //Deactivate this current state
+        //activate the next state
+        //generate the next state's enemies
+        //also make sure if there is a next state in the first place
+        //if not, then send the player to the Limbo bridge
+        //either way, teleport the player to the state's entry point
+        if (nextState != null)
+        {
+            nextState.gameObject.SetActive(true);
+            nextState.GenerateEnemies();
+        }
+    }
+
+    public bool WavesCleared()
+    {
+        foreach (var waves in enemyWaves)
+        {
+            if (waves.EnemyLength > 0)
+                return false;
+        }
+        return true;
+    }
     public Substate NextState { get { return nextState; } set { nextState = value; } }
+    public Transform Entry { get { return entryPoint; } set { entryPoint = value; } }
 }

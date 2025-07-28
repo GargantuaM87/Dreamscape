@@ -280,9 +280,9 @@ MonoBehaviour:
   OnDeathReference:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: FreezeFrame, Assembly-CSharp
-        m_MethodName: ShakeCamera
+      - m_Target: {fileID: 4903341667673309140}
+        m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
+        m_MethodName: DecreaseWaveLength
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

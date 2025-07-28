@@ -95,6 +95,10 @@ public class DialogManager : MonoBehaviour
                 option1Button.GetComponentInChildren<TMP_Text>().text = line.answerOption1;
                 option2Button.GetComponentInChildren<TMP_Text>().text = line.answerOption2;
 
+                option1Button.transform.DOLocalMoveX(650f, 1f);
+                option2Button.transform.DOLocalMoveX(650f, 1f);
+
+
                 yield return new WaitUntil(() => optionSelected);
             }
             else
