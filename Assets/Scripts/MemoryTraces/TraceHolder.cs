@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class TraceHolder : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI nameText;
-    [SerializeField] private TextMeshProUGUI descText;
+    [SerializeField] private TMP_Text nameText;
+    [SerializeField] private TMP_Text descText;
     private bool isSelected = false;
     private Traces trace;
     //when you come back work on these:

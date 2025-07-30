@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour, IHitable
     private MaterialController matController;
     private AudioManager audioManager;
     private Rigidbody rb;
+    private Bells bellSystem;
 
 
 
@@ -19,6 +20,7 @@ public class Enemy : MonoBehaviour, IHitable
         audioManager = FindAnyObjectByType<AudioManager>();
         rb = GetComponent<Rigidbody>();
         matController = new MaterialController(mats[0], mats[1], mats[2]);
+        bellSystem = FindAnyObjectByType<Bells>();
     }
 
     void OnCollisionEnter(Collision collision)
@@ -44,6 +46,7 @@ public class Enemy : MonoBehaviour, IHitable
     }
 
     public void DecreaseWaveLength() => parentWave.EnemyLength -= 1;
+    public void IncreaseSomni() => bellSystem.GainSomni();
 
     public void KnockbackEntity(Transform executionSource, int knockbackForce)
     {

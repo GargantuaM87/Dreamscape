@@ -17,7 +17,7 @@ public class TraceSystem : MonoBehaviour, IInteractable
     private bool constructReady = false;
     private Material mat;
     private List<Traces> availableTraces;
-    private Dictionary<string, Traces> selectList;
+    private static Dictionary<string, Traces> selectList;
     private Rarity rarityTest;
     private string firstTrace, secondTrace, thirdTrace;
     private Bells bellComp;

@@ -11,7 +11,7 @@ public static class StructExtensions
             .ToDictionary(item => item.Key, item => item.Value);
     }
 
-    public static void Shuffle<T>(this IList<T> ts) {
+    public static void ShuffleList<T>(this IList<T> ts) {
         var count = ts.Count;
         var last = count - 1;
         for (var i = 0; i < last; ++i) {

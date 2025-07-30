@@ -9,11 +9,13 @@ public class Substate : MonoBehaviour
     [SerializeField] private List<Enemy> data;
     [SerializeField] private List<GameObject> spawnPoints;
     [SerializeField] private int numOfWaves;
+    [SerializeField] private TraceSystem bellTower;
     private List<Waves> enemyWaves = new List<Waves>();
     private List<Enemy> enemies;
     private Substate nextState;
     private Waves currentWave = new Waves();
     private bool waveDefeated = false;
+    private bool spawnBellTower = false;
 
 
     void Awake()
@@ -25,6 +27,13 @@ public class Substate : MonoBehaviour
     {
         if (currentWave.EnemyLength <= 0)
             waveDefeated = true;
+        if (WavesCleared())
+            spawnBellTower = true;
+        if (spawnBellTower)
+        {
+            bellTower.gameObject.SetActive(true);
+            spawnBellTower = false;
+        }
     }
 
     public void GenerateEnemies()
@@ -51,7 +60,7 @@ public class Substate : MonoBehaviour
 
     public IEnumerator SpawnEnemies()
     {
-        StructExtensions.Shuffle(spawnPoints);
+        StructExtensions.ShuffleList(spawnPoints);
 
         foreach (Waves wave in enemyWaves)
         {

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Bells : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI countText;
+    [SerializeField] private TextMeshProUGUI bellCount, somniCount;
     [SerializeField] private int gainChance;
     [SerializeField] private int bellGainAmount = 1;
     [SerializeField] private int somniMergeAmount = 10;
@@ -12,7 +12,7 @@ public class Bells : MonoBehaviour
 
     void Update()
     {
-        countText.text = " " + bells;
+        bellCount.text = " " + bells;
     }
 
     public void CalculateChance()
@@ -21,23 +21,25 @@ public class Bells : MonoBehaviour
         if (randomNum == 1)
         {
             bells += bellGainAmount;
-            countText.text = " " + bells;
+            bellCount.text = " " + bells;
         }
     }
 
     public void GainBells(int num)
     {
         bells += num;
-        countText.text = " " + bells;
+        bellCount.text = " " + bells;
     }
 
     public void GainSomni()
     {
         somni += 1;
+        somniCount.text = "" + somni;
         if (somni == somniMergeAmount)
         {
             CalculateChance();
             somni = 0;
+            somniCount.text = "" + somni;
         }
     }
 
