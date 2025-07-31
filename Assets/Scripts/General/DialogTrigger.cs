@@ -38,6 +38,11 @@ public class DialogString
     public string answerOption2;
     public int option1IndexJump;
     public int option2IndexJump;
+    [Header("Irene Branch")]
+
+    [TextArea] public string ireneMainDialog = null;
+    [TextArea] public string ireneDialog1;
+    [TextArea] public string ireneDialog2;
 
     [Header("Trigger Events")]
     public UnityEvent startDialogEvent;

@@ -5,8 +5,9 @@ using UnityEngine;
 using DG.Tweening;
 using System.Collections;
 
-public class TraceSystem : MonoBehaviour, IInteractable
+public class TraceSystem : MonoBehaviour
 {
+    public static TraceSystem instance;
     [SerializeField] private List<Traces> traces;
     [SerializeField] private GameObject traceMenu;
     [SerializeField] private GameObject confirmationMenu;
@@ -15,13 +16,24 @@ public class TraceSystem : MonoBehaviour, IInteractable
     private float constructDelay = 1.2f;
     private float delayTimer;
     private bool constructReady = false;
-    private Material mat;
     private List<Traces> availableTraces;
-    private static Dictionary<string, Traces> selectList;
+    private  Dictionary<string, Traces> selectList;
     private Rarity rarityTest;
     private string firstTrace, secondTrace, thirdTrace;
     private Bells bellComp;
     private int bells;
+    private BellTower bellTower;
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+            Destroy(gameObject);
+    }
 
     void Start()
     {
@@ -30,8 +42,6 @@ public class TraceSystem : MonoBehaviour, IInteractable
         {
             selectList.Add(trace.Name, trace);
         }
-
-        mat = GetComponent<MeshRenderer>().material;
     }
 
     void Update()
@@ -41,18 +51,15 @@ public class TraceSystem : MonoBehaviour, IInteractable
             constructReady = true;
     }
 
-    public void Interact(GameObject sender)
+    public void RecieveTowerData(Bells component, int bellNum, BellTower bellTower)
     {
-        bellComp = sender.GetComponent<Bells>();
-        bells = bellComp.BellNum;
-        if (bells >= 1)
-            confirmationMenu.SetActive(true);
+        bellComp = component;
+        bells = bellNum;
+        this.bellTower = bellTower;
     }
 
-    public string GetDiscription()
-    {
-        return "Bell Tower";
-    }
+    public void Confirmation() => confirmationMenu.SetActive(true);
+
 
     public IEnumerator DelayConstruct()
     {
@@ -133,21 +140,21 @@ public class TraceSystem : MonoBehaviour, IInteractable
 
     public void DramaEffects()
     {
-        Color oColor = mat.color;
-        bellTowerEffects.SetActive(true);
+        Color oColor = bellTower.Mat.color;
+        bellTower.bellTowerEffects.SetActive(true);
         FreezeFrame.instance.ShakeCamera(1.5f, 7f, 10, 90, true);
         AudioManager.instance.PlaySound("BellTowerChime");
         AudioManager.instance.PlaySound("BellTowerInit");
 
         var sequence = DOTween.Sequence();
-        sequence.Append(mat.DOColor(Color.white, 0.2f));
-        sequence.Append(mat.DOColor(oColor, 0.2f));
+        sequence.Append(bellTower.Mat.DOColor(Color.white, 0.2f));
+        sequence.Append(bellTower.Mat.DOColor(oColor, 0.2f));
     }
 
     public void Deconstruct()
     {
         traceMenu.SetActive(false);
-        bellTowerEffects.SetActive(false);
+        bellTower.bellTowerEffects.SetActive(false);
 
         Traces[] tempList = availableTraces.ToArray();
         for (int i = 0; i < tempList.Length; i++)

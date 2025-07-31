@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7177450967004338066}
   - component: {fileID: 2747264295191361828}
   - component: {fileID: 1887050811111951653}
-  - component: {fileID: 5910323013875993482}
   - component: {fileID: 2196498873173767961}
   - component: {fileID: 1301562126833611592}
+  - component: {fileID: 1872747863266813780}
   m_Layer: 0
   m_Name: Monolith
   m_TagString: Untagged
@@ -113,33 +113,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2, y: 1, z: 2}
   m_Center: {x: 0, y: 0, z: -0.006433973}
---- !u!114 &5910323013875993482
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7431239111479743741}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d82b9545247642ca9c9c6bb10343834, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  traces:
-  - {fileID: 11400000, guid: 19a0fc72535764a1f94446fbcc29a11e, type: 2}
-  - {fileID: 11400000, guid: e104e8595a8e34d7ab00341e27f853f2, type: 2}
-  - {fileID: 11400000, guid: 3c2238d72058f4e5a998769b9ce6e797, type: 2}
-  - {fileID: 11400000, guid: 5319d23018ba34420a9148ca637913ab, type: 2}
-  - {fileID: 11400000, guid: e4930718c14a3417fa8216648a1e4a9c, type: 2}
-  - {fileID: 11400000, guid: a0587df559d0e4f6f90aa745afd0a772, type: 2}
-  - {fileID: 11400000, guid: adf89543c560b4626a070d6df660b3c2, type: 2}
-  traceMenu: {fileID: 0}
-  confirmationMenu: {fileID: 0}
-  traceCards:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  bellTowerEffects: {fileID: 9049085804399022072}
 --- !u!54 &2196498873173767961
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -147,10 +120,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7431239111479743741}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -181,6 +154,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionUI: {fileID: 2462037786560987534}
   interactionText: {fileID: 7645674904420708122}
+--- !u!114 &1872747863266813780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7431239111479743741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 331b4b9b240e9b74387d8a8a6649c397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bellTowerEffects: {fileID: 9049085804399022072}
 --- !u!1 &9049085804399022072
 GameObject:
   m_ObjectHideFlags: 0

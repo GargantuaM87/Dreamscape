@@ -54,6 +54,7 @@ public class ShieldSpecial : Special
         GameObject obj = Instantiate(projectile, spawn.transform.position, quaternion.identity, transform);
         obj.GetComponent<Rigidbody>().AddForce(projSpeed * transform.forward, ForceMode.Impulse);
         rb.AddForce(projSpeed * 2f * -transform.forward, ForceMode.Impulse);
+        Destroy(obj, 2f);
 
         animator.SetTrigger("Rest");
     }

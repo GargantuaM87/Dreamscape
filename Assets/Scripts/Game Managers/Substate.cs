@@ -9,7 +9,7 @@ public class Substate : MonoBehaviour
     [SerializeField] private List<Enemy> data;
     [SerializeField] private List<GameObject> spawnPoints;
     [SerializeField] private int numOfWaves;
-    [SerializeField] private TraceSystem bellTower;
+    [SerializeField] private BellTower bellTower;
     private List<Waves> enemyWaves = new List<Waves>();
     private List<Enemy> enemies;
     private Substate nextState;

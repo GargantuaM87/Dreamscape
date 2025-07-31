@@ -5,17 +5,17 @@ public class TraceHolder : MonoBehaviour
 {
     [SerializeField] private TMP_Text nameText;
     [SerializeField] private TMP_Text descText;
+    [SerializeField] private TMP_Text rarityText;
     private bool isSelected = false;
     private Traces trace;
     //when you come back work on these:
     //text color for rarity
-//label that tells what rarity a trace is 
+    //label that tells what rarity a trace is 
     public void Assign()
     {
         nameText.text = trace.Name;
         descText.text = trace.Desc;
-
-        nameText.color = ColorName();
+        SetRarity();
     }
 
     public void TriggerExecute()
@@ -24,11 +24,16 @@ public class TraceHolder : MonoBehaviour
         trace.Execute();
     }
 
-    private Color ColorName()
+    private void SetRarity()
     {
         if (trace.tRarity == Rarity.COMMON)
-            return new Color(43f, 161f, 209f);
-        return Color.white;
+            rarityText.text = "COMMON";
+        if (trace.tRarity == Rarity.RARE)
+            rarityText.text = "RARE";
+        if (trace.tRarity == Rarity.EPIC)
+            rarityText.text = "EPIC";
+        if (trace.tRarity == Rarity.LEGENDARY)
+            rarityText.text = "LEGENDARY";
     }
 
     public Traces Trace

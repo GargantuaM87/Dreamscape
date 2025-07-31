@@ -11,7 +11,7 @@ public class AudioManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-         if (instance == null)
+        if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
@@ -36,5 +36,13 @@ public class AudioManager : MonoBehaviour
         if (s == null)
             return;
         s.source.Play();
+    }
+
+    public void StopSound()
+    {
+        foreach (Sound s in sounds)
+        {
+            s.source.Stop();
+        }
     }
 }

@@ -24,6 +24,9 @@ public class DialogManager : MonoBehaviour
     [SerializeField] private Image avatarDisplay;
     [SerializeField] private TMP_Text sName;
     [SerializeField] private TMP_Text sTitle;
+    private SpeakerInfo speakerInfo;
+    [Header("Irene Info")]
+    [SerializeField] private Sprite ireneAvatar;
 
     [Header("Player")]
     [SerializeField] private PlayerController playerController;
@@ -51,6 +54,7 @@ public class DialogManager : MonoBehaviour
         playerController.enabled = false;
         playerController.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
 
+        this.speakerInfo = speakerInfo;
         SetSpeakerInfo(speakerInfo);
 
         dialogList = textToPrint;
@@ -84,7 +88,10 @@ public class DialogManager : MonoBehaviour
         {
             line = dialogList[currentDialogIndex];
 
+            SetSpeakerInfo(speakerInfo);
+
             line.startDialogEvent?.Invoke();
+
 
             if (line.isQuestion)
             {
@@ -97,12 +104,13 @@ public class DialogManager : MonoBehaviour
                 option1Button.transform.DOLocalMoveX(650f, 1f);
                 option2Button.transform.DOLocalMoveX(650f, 1f);
 
-
                 yield return new WaitUntil(() => optionSelected);
             }
             else
             {
                 yield return StartCoroutine(TypeText(line.text));
+                if (line.ireneMainDialog.Length > 0)
+                    yield return StartCoroutine(IreneDialog(line.ireneMainDialog, false));
             }
             line.startDialogEvent?.Invoke();
 
@@ -111,15 +119,34 @@ public class DialogManager : MonoBehaviour
         DialogStop();
     }
 
-    public void ClickedButtonOne() => HandleOptionSelected(line.option1IndexJump);
-    public void ClickedButtonTwo() => HandleOptionSelected(line.option2IndexJump);
-
-    private void HandleOptionSelected(int indexJump)
+    private IEnumerator IreneDialog(string ireneDialog, bool wasQuestion)
     {
-        optionSelected = true;
-        DisableButtons();
+        avatarDisplay.sprite = ireneAvatar;
+        sName.text = "IRENE";
+        sTitle.text = "DREAMER";
 
+        yield return StartCoroutine(TypeIreneText(ireneDialog));
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        optionSelected = wasQuestion;
+    }
+    public void ClickedButtonOne() => HandleOptionSelected(line.option1IndexJump, line.ireneDialog1);
+    public void ClickedButtonTwo() => HandleOptionSelected(line.option2IndexJump, line.ireneDialog2);
+
+    private void HandleOptionSelected(int indexJump, string ireneText)
+    {
+        StartCoroutine(IreneDialog(ireneText, true));
+        DisableButtons();
         currentDialogIndex = indexJump;
+    }
+
+    private IEnumerator TypeIreneText(string text)
+    {
+        dialogText.text = "";
+        foreach (char letter in text.ToCharArray())
+        {
+            dialogText.text += letter;
+            yield return new WaitForSeconds(typingSpeed);
+        }
     }
 
     private IEnumerator TypeText(string text)

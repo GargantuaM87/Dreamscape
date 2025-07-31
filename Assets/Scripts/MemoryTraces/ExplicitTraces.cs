@@ -5,17 +5,20 @@ public class ExplicitTraces : Traces
 {
     //Get references to player for attack stat, health 
     [Header("Health")]
+    [SerializeField] private bool isHealthMod = false;
     [SerializeField] private int hpMod;
-    [SerializeField] private bool isHealthMod;
+    
     [Header("Weapon Stats")]
+    [SerializeField] private bool isWeaponMod = false;
     [SerializeField] private float atkMod;
     [SerializeField] private float knockbackMod;
-    [SerializeField] private bool isWeaponMod;
+    
     [Header("Bell Stats")]
+    [SerializeField] private bool isBellMod = false;
     [SerializeField] private int bellChanceMod;
     [SerializeField] private int gainMod;
     [SerializeField] private int somniMergeMod;
-    [SerializeField] private bool isBellMod;
+    
     private Health playerHealth;
     private Weapons playerWeapon;
     private Bells playerBells;
@@ -37,8 +40,8 @@ public class ExplicitTraces : Traces
         //Weapon Mods
         if (isWeaponMod)
         {
-            playerWeapon.Damage += Mathf.FloorToInt(playerWeapon.Damage * atkMod);
-            playerWeapon.Knockback += Mathf.FloorToInt(playerWeapon.Knockback * knockbackMod);
+            playerWeapon.Damage += Mathf.CeilToInt(playerWeapon.Damage * atkMod);
+            playerWeapon.Knockback += Mathf.CeilToInt(playerWeapon.Knockback * knockbackMod);
         }
         //Bell Mods
         if (isBellMod)
