@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7734884e827648a783fb86972012926, type: 3}
   m_Name: Phantastic Prudence
   m_EditorClassIdentifier: 
-  traceName: 
-  description: 
-  rarity: 0
+  traceName: Phantastic Prudence
+  description: "A phantom force that pulls and pushes at will.\nSomni Merge Reduction/Knockback:\t-3/+30%"
+  rarity: 1
   isHealthMod: 0
   hpMod: 0
-  isWeaponMod: 0
+  isWeaponMod: 1
   atkMod: 0
-  knockbackMod: 0
-  isBellMod: 0
+  knockbackMod: 0.3
+  isBellMod: 1
   bellChanceMod: 0
   gainMod: 0
-  somniMergeMod: 0
+  somniMergeMod: 3
