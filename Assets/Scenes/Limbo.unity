@@ -1309,7 +1309,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1616, y: 949}
+  m_AnchoredPosition: {x: 807, y: 421}
   m_SizeDelta: {x: 1391.0576, y: 171.64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &128949692
@@ -1359,8 +1359,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
-  m_fontSizeBase: 72
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4699,6 +4699,8 @@ GameObject:
   - component: {fileID: 313949435}
   - component: {fileID: 313949433}
   - component: {fileID: 313949438}
+  - component: {fileID: 313949440}
+  - component: {fileID: 313949439}
   m_Layer: 5
   m_Name: QuitButton
   m_TagString: Untagged
@@ -4722,8 +4724,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -315, y: -239.8063}
-  m_SizeDelta: {x: 447.2805, y: 110.0926}
+  m_AnchoredPosition: {x: -294, y: -239.8063}
+  m_SizeDelta: {x: 904.5423, y: 110.0926}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &313949433
 MonoBehaviour:
@@ -4780,7 +4782,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 313949436}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 313949431}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &313949436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4835,7 +4849,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 10
@@ -4902,6 +4916,47 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &313949439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 313949431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 313949440}
+          m_TargetAssemblyTypeName: Button, Assembly-CSharp
+          m_MethodName: PlaySound
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: QT_ButtonHover
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &313949440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 313949431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8314bacb81e94541bafdd96d91f4a99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -7400,6 +7455,8 @@ GameObject:
   - component: {fileID: 611467407}
   - component: {fileID: 611467406}
   - component: {fileID: 611467405}
+  - component: {fileID: 611467411}
+  - component: {fileID: 611467410}
   m_Layer: 5
   m_Name: ResumeButton
   m_TagString: Untagged
@@ -7423,8 +7480,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -525, y: 202.40869}
-  m_SizeDelta: {x: 447.2805, y: 125.6626}
+  m_AnchoredPosition: {x: -611, y: 202.40869}
+  m_SizeDelta: {x: 904.5423, y: 125.6626}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &611467405
 MonoBehaviour:
@@ -7558,7 +7615,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 10
@@ -7603,6 +7660,47 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 611467403}
   m_CullTransparentMesh: 1
+--- !u!114 &611467410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611467403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 611467411}
+          m_TargetAssemblyTypeName: Button, Assembly-CSharp
+          m_MethodName: PlaySound
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: RSM_ButtonHover
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &611467411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611467403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8314bacb81e94541bafdd96d91f4a99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &613488294
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9114,22 +9212,70 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5020407860654675096, guid: 4d5280c82c10e4d8994dfef76cd8bda5, type: 3}
       propertyPath: sounds.Array.size
-      value: 8
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5020407860654675096, guid: 4d5280c82c10e4d8994dfef76cd8bda5, type: 3}
-      propertyPath: sounds.Array.data[7].clip
+      propertyPath: sounds.Array.data[8].clip
       value: 
-      objectReference: {fileID: 8300000, guid: a0d9ff04cc60d4462829b471159efdc7, type: 3}
+      objectReference: {fileID: 8300000, guid: a2d54d70038c548b4b3705b03d0a4f4c, type: 3}
     - target: {fileID: 5020407860654675096, guid: 4d5280c82c10e4d8994dfef76cd8bda5, type: 3}
-      propertyPath: sounds.Array.data[7].name
-      value: ButtonHover
+      propertyPath: sounds.Array.data[8].name
+      value: RSM_ButtonHover
       objectReference: {fileID: 0}
     - target: {fileID: 5020407860654675096, guid: 4d5280c82c10e4d8994dfef76cd8bda5, type: 3}
-      propertyPath: sounds.Array.data[7].pitch
+      propertyPath: sounds.Array.data[9].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: a2d54d70038c548b4b3705b03d0a4f4c, type: 3}
+    - target: {fileID: 5020407860654675096, guid: 4d5280c82c10e4d8994dfef76cd8bda5, type: 3}
+      propertyPath: sounds.Array.data[9].name
+      value: OPT_ButtonHover
+      objectReference: {fileID: 0}
+    - target: {fileID: 5020407860654675096, guid: 4d5280c82c10e4d8994dfef76cd8bda5, type: 3}
+      propertyPath: sounds.Array.data[10].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6369ca71438a04152970aa044447bd5c, type: 3}
+    - target: {fileID: 5020407860654675096, guid: 4d5280c82c10e4d8994dfef76cd8bda5, type: 3}
+      propertyPath: sounds.Array.data[10].name
+      value: RT_ButtonHover
+      objectReference: {fileID: 0}
+    - target: {fileID: 5020407860654675096, guid: 4d5280c82c10e4d8994dfef76cd8bda5, type: 3}
+      propertyPath: sounds.Array.data[11].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: f40ab3313a2c14c46b6419c80a6a4aaf, type: 3}
+    - target: {fileID: 5020407860654675096, guid: 4d5280c82c10e4d8994dfef76cd8bda5, type: 3}
+      propertyPath: sounds.Array.data[11].name
+      value: QT_ButtonHover
+      objectReference: {fileID: 0}
+    - target: {fileID: 5020407860654675096, guid: 4d5280c82c10e4d8994dfef76cd8bda5, type: 3}
+      propertyPath: sounds.Array.data[8].pitch
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5020407860654675096, guid: 4d5280c82c10e4d8994dfef76cd8bda5, type: 3}
+      propertyPath: sounds.Array.data[9].pitch
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5020407860654675096, guid: 4d5280c82c10e4d8994dfef76cd8bda5, type: 3}
-      propertyPath: sounds.Array.data[7].volume
+      propertyPath: sounds.Array.data[10].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5020407860654675096, guid: 4d5280c82c10e4d8994dfef76cd8bda5, type: 3}
+      propertyPath: sounds.Array.data[11].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5020407860654675096, guid: 4d5280c82c10e4d8994dfef76cd8bda5, type: 3}
+      propertyPath: sounds.Array.data[8].volume
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 5020407860654675096, guid: 4d5280c82c10e4d8994dfef76cd8bda5, type: 3}
+      propertyPath: sounds.Array.data[9].volume
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 5020407860654675096, guid: 4d5280c82c10e4d8994dfef76cd8bda5, type: 3}
+      propertyPath: sounds.Array.data[10].volume
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 5020407860654675096, guid: 4d5280c82c10e4d8994dfef76cd8bda5, type: 3}
+      propertyPath: sounds.Array.data[11].volume
       value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 8695065514983389292, guid: 4d5280c82c10e4d8994dfef76cd8bda5, type: 3}
@@ -18362,10 +18508,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -20004,6 +20150,8 @@ GameObject:
   - component: {fileID: 1681912307}
   - component: {fileID: 1681912305}
   - component: {fileID: 1681912310}
+  - component: {fileID: 1681912312}
+  - component: {fileID: 1681912311}
   m_Layer: 5
   m_Name: OptionsButton
   m_TagString: Untagged
@@ -20027,8 +20175,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -455, y: 57.619995}
-  m_SizeDelta: {x: 447.2805, y: 115.24}
+  m_AnchoredPosition: {x: -490, y: 57.619995}
+  m_SizeDelta: {x: 904.5423, y: 115.24}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1681912305
 MonoBehaviour:
@@ -20085,7 +20233,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1681912308}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1681912303}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1681912308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20140,7 +20300,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 10
@@ -20207,6 +20367,47 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1681912311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1681912303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1681912312}
+          m_TargetAssemblyTypeName: Button, Assembly-CSharp
+          m_MethodName: PlaySound
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: OPT_ButtonHover
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1681912312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1681912303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8314bacb81e94541bafdd96d91f4a99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1689728771
 GameObject:
   m_ObjectHideFlags: 0
@@ -20410,7 +20611,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 815}
+  m_AnchoredPosition: {x: 0, y: 401}
   m_SizeDelta: {x: 1391.0576, y: 171.64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1713026135
@@ -20462,8 +20663,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 144
-  m_fontSizeBase: 144
+  m_fontSize: 72
+  m_fontSizeBase: 72
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -23947,6 +24148,8 @@ GameObject:
   - component: {fileID: 2039752343}
   - component: {fileID: 2039752341}
   - component: {fileID: 2039752346}
+  - component: {fileID: 2039752348}
+  - component: {fileID: 2039752347}
   m_Layer: 5
   m_Name: ResetButton
   m_TagString: Untagged
@@ -23970,8 +24173,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -385, y: -89.806335}
-  m_SizeDelta: {x: 447.2805, y: 110.0926}
+  m_AnchoredPosition: {x: -400, y: -89.806335}
+  m_SizeDelta: {x: 904.5423, y: 110.0926}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2039752341
 MonoBehaviour:
@@ -24028,7 +24231,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2039752344}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2039752339}
+        m_TargetAssemblyTypeName: PauseMenuButtons, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2039752341}
+        m_TargetAssemblyTypeName: PauseMenuButtons, Assembly-CSharp
+        m_MethodName: RestartButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2039752344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24083,7 +24310,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 10
@@ -24150,6 +24377,47 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2039752347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2039752339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2039752348}
+          m_TargetAssemblyTypeName: Button, Assembly-CSharp
+          m_MethodName: PlaySound
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: RT_ButtonHover
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &2039752348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2039752339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8314bacb81e94541bafdd96d91f4a99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2040496507
 GameObject:
   m_ObjectHideFlags: 0
@@ -25536,7 +25804,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 17458483608495424, guid: 673c6425e0bd64a9ca38dae3f366639d, type: 3}
       propertyPath: damage
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 17458483608495424, guid: 673c6425e0bd64a9ca38dae3f366639d, type: 3}
       propertyPath: criticalChance
