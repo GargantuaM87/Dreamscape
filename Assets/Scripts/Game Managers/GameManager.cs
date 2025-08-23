@@ -32,12 +32,12 @@ public class GameManager : MonoBehaviour
         isGamePasued = !isGamePasued;
         if (isGamePasued == true)
         {
-            Time.timeScale = 0;
+            Time.timeScale = 0.0f;
             pauseMenu.SetActive(true);
         }
         else
         {
-            Time.timeScale = 1;
+            Time.timeScale = 1.0f;
             pauseMenu.SetActive(false);
         }
     }
