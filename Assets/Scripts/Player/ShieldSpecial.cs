@@ -20,11 +20,14 @@ public class ShieldSpecial : Special
         rb = GetComponent<Rigidbody>();
         playerController = GetComponent<PlayerController>();
 
+        cooldownSlider.maxValue = cooldown;
+
         shieldComp.CurrentShield = 0;
     }
     void Update()
     {
         cooldownTimer -= Time.deltaTime;
+        cooldownSlider.value = cooldownTimer;
 
         if (Input.GetKeyDown(KeyCode.Mouse1) && cooldownTimer <= 0)
             Execute();
@@ -47,6 +50,7 @@ public class ShieldSpecial : Special
         shield.SetActive(false);
         shieldComp.CurrentShield = 0;
         cooldownTimer = cooldown;
+        cooldownSlider.value = cooldownTimer;
         executed = false;
 
         playerController.enabled = true;

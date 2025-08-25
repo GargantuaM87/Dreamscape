@@ -1,12 +1,14 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     #region Variables
     [SerializeField] private GameObject Irene;
     [SerializeField] float moveSpeed;
+    [SerializeField] Slider dashSlider;
     private SkinnedMeshRenderer[] smr;
 
     private float horizontalInput;
@@ -35,7 +37,10 @@ public class PlayerController : MonoBehaviour
         smr = GetComponentsInChildren<SkinnedMeshRenderer>();
         bc = GetComponent<BoxCollider>();
         rb = GetComponent<Rigidbody>();
+
         dashes = consecutiveDashes;
+        dashSlider.maxValue = dashCoolDown;
+        dashSlider.value = dashCoolDown;
     }
 
     // Update is called once per frame
@@ -48,6 +53,8 @@ public class PlayerController : MonoBehaviour
 
         dashTime -= Time.deltaTime;
         dashCoolDownTimer -= Time.deltaTime;
+
+        dashSlider.value = dashCoolDownTimer;
 
         if (Input.GetKey(KeyCode.Q) && dashCoolDownTimer < 0)
             DashAbility();
@@ -75,6 +82,7 @@ public class PlayerController : MonoBehaviour
         {
             dashes = consecutiveDashes;
             dashCoolDownTimer = dashCoolDown;
+            dashSlider.value = dashCoolDownTimer;
         }
     }
 
