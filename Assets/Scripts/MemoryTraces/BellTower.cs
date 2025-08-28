@@ -3,6 +3,7 @@ using UnityEngine;
 public class BellTower : MonoBehaviour, IInteractable
 {
     public GameObject bellTowerEffects;
+    public GameObject powerupEffects;
     private Bells bellComp;
     private int bells;
     private TraceSystem traceSystem;

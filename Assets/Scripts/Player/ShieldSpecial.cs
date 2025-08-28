@@ -30,9 +30,29 @@ public class ShieldSpecial : Special
         cooldownSlider.value = cooldownTimer;
 
         if (Input.GetKeyDown(KeyCode.Mouse1) && cooldownTimer <= 0)
+        {
             Execute();
+        }
+
+        if (executed)
+        {
+            FaceMouseOnHold();
+        }
+
         if (Input.GetKeyUp(KeyCode.Mouse1) && executed)
             DeExecute();
+    }
+
+    public void FaceMouseOnHold()
+    {
+        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit RayHit))
+        {
+            Vector3 Hitpoint = RayHit.point;
+            Vector3 direction = (Hitpoint - transform.position).normalized;
+            Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+            transform.rotation = lookRotation;
+        }
     }
 
     public override void Execute()
@@ -44,6 +64,7 @@ public class ShieldSpecial : Special
         animator.SetTrigger("Block");
 
         playerController.enabled = false;
+        Debug.Log("I was called!");
     }
     public override void DeExecute()
     {

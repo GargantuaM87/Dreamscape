@@ -64,6 +64,9 @@ public class PlayerController : MonoBehaviour
         else
             bc.enabled = true;
 
+        if (Input.GetMouseButtonDown(0))
+            FaceMouseOnClick();
+
         HandleDirection();
         Switch();
     }
@@ -116,6 +119,19 @@ public class PlayerController : MonoBehaviour
             /*Vector3 move = Time.deltaTime * new Vector3(horizontalInput, 0, verticalInput);
             rb.MovePosition(rb.position + move);*/
             rb.linearVelocity = moveSpeed * Time.fixedDeltaTime * moveDirection;
+        }
+    }
+
+    public void FaceMouseOnClick()
+    {
+
+        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit RayHit))
+        {
+            Vector3 Hitpoint = RayHit.point;
+            Vector3 direction = (Hitpoint - transform.position).normalized;
+            Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+            transform.rotation = lookRotation;
         }
     }
 
