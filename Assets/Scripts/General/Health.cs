@@ -46,9 +46,9 @@ public class Health : MonoBehaviour
     {
         // GameObject damageIndicator = objectPooler.SpawnFromPool("FloatingText", transform.position, Quaternion.identity);
         GameObject damageIndicator = Instantiate(floatingText, transform.position, Quaternion.identity);
-        damageIndicator.GetComponent<TextMeshPro>().text = " " + damage; 
+        damageIndicator.GetComponent<TextMeshPro>().text = " " + damage;
     }
 
     public int CurrentHealth { get { return currentHealth; } set { currentHealth = value; } }
-    public int MaxHealth { get { return maxHealth; } set { maxHealth = value; }}
+    public int MaxHealth { get { return maxHealth; } set { maxHealth = value; } }
 }

@@ -12,6 +12,7 @@ public class TraceSystem : MonoBehaviour
     [SerializeField] private GameObject traceMenu;
     [SerializeField] private GameObject confirmationMenu;
     [SerializeField] private TraceHolder[] traceCards;
+    public GameObject powerupEffects;
     public GameObject bellTowerEffects;
     private float constructDelay = 1.2f;
     private float delayTimer;
@@ -155,6 +156,7 @@ public class TraceSystem : MonoBehaviour
     {
         traceMenu.SetActive(false);
         bellTower.bellTowerEffects.SetActive(false);
+        bellTower.PowerUpEffect();
 
         Traces[] tempList = availableTraces.ToArray();
         for (int i = 0; i < tempList.Length; i++)
