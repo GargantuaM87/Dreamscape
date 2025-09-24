@@ -1799,7 +1799,7 @@ MonoBehaviour:
   - {fileID: 2066909150}
   - {fileID: 1460693715}
   - {fileID: 1159424829}
-  powerupEffects: {fileID: 0}
+  powerupEffects: {fileID: 9157105887711914197, guid: c4f829cb7dd4b864caf8832ec5b1ee55, type: 3}
   bellTowerEffects: {fileID: 1679945050}
 --- !u!1 &140730281
 GameObject:
@@ -3580,7 +3580,7 @@ MonoBehaviour:
   sName: {fileID: 4820053}
   sTitle: {fileID: 1976113550}
   ireneAvatar: {fileID: 21300000, guid: 4cd36796220d246f5936bc2e3d3dbf7b, type: 3}
-  playerController: {fileID: 0}
+  playerController: {fileID: 367416308}
 --- !u!1 &273132548
 GameObject:
   m_ObjectHideFlags: 0
@@ -4362,7 +4362,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 56.255, y: -503.38}
+  m_AnchoredPosition: {x: 56.254883, y: -503.37988}
   m_SizeDelta: {x: -1760, y: -1060}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &288662070
@@ -5770,6 +5770,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6231812162408083929, guid: 673c6425e0bd64a9ca38dae3f366639d, type: 3}
   m_PrefabInstance: {fileID: 8232257412725616291}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &367416308 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6579831684261866158, guid: 673c6425e0bd64a9ca38dae3f366639d, type: 3}
+  m_PrefabInstance: {fileID: 8232257412725616291}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367416294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0abfca7a88bb7418183960de748bc0bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &368620079
 GameObject:
   m_ObjectHideFlags: 0
@@ -16888,7 +16899,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1362608317
 Transform:
   m_ObjectHideFlags: 0
@@ -22811,7 +22822,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -18.111023, y: -503.38}
+  m_AnchoredPosition: {x: -18.111084, y: -503.37988}
   m_SizeDelta: {x: -1760, y: -1060}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1427245054
@@ -31732,7 +31743,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3598475836142938620, guid: 673c6425e0bd64a9ca38dae3f366639d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3806018132821928544, guid: 673c6425e0bd64a9ca38dae3f366639d, type: 3}
       propertyPath: shield
@@ -31826,6 +31837,10 @@ PrefabInstance:
       propertyPath: OnDeathReference.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 402159843}
+    - target: {fileID: 8486337899530980383, guid: 673c6425e0bd64a9ca38dae3f366639d, type: 3}
+      propertyPath: damage
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
