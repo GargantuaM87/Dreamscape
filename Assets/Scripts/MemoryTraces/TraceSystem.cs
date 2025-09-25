@@ -24,7 +24,6 @@ public class TraceSystem : MonoBehaviour
     private Bells bellComp;
     private int bells;
     private BellTower bellTower;
-
     void Awake()
     {
         if (instance == null)
@@ -51,7 +50,12 @@ public class TraceSystem : MonoBehaviour
         if (delayTimer <= 0)
             constructReady = true;
     }
-
+    /// <summary>
+    /// A constructore for bell towers to pass in their individual values to this static system.
+    /// </summary>
+    /// <param name="component"></param>
+    /// <param name="bellNum"></param>
+    /// <param name="bellTower"></param>
     public void RecieveTowerData(Bells component, int bellNum, BellTower bellTower)
     {
         bellComp = component;
@@ -82,7 +86,12 @@ public class TraceSystem : MonoBehaviour
             StartCoroutine(DelayConstruct());
         }
     }
-
+    /// <summary>
+    /// Shuffles through a given list of trace cards and will generate a random number for a rarity test. 
+    /// While traversing through the shuffled list, the card's rarity (Common, Rare, Epic, Legendary) is tested against the number.
+    /// If it passes the rarity tes, the card is added to a separate collection for the player to choose from.
+    /// Each trace card that is selected is then removed from the global trace card list, having a chance to return after.
+    /// </summary>
     public void Construct()
     {
         availableTraces = new List<Traces>();
@@ -151,7 +160,12 @@ public class TraceSystem : MonoBehaviour
         sequence.Append(bellTower.Mat.DOColor(Color.white, 0.2f));
         sequence.Append(bellTower.Mat.DOColor(oColor, 0.2f));
     }
-
+/// <summary>
+/// Deconstruct will convert the available pool of traces from a list to an array then loop through it.
+/// The purpose of this loop is to determine if a trace card was selected by the player.
+/// If it wasn't then the trace card is added back to the global trace card list, for another round of rarity testing.
+/// Finally, the list of three available traces is emptied and prepared for the next insert of cards.
+/// </summary>
     public void Deconstruct()
     {
         traceMenu.SetActive(false);
